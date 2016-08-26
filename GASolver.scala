@@ -16,7 +16,6 @@ object GASolver {
     def isMutation = isTrue(mutationRate)
 
     def alternation(genes: Seq[Gene], generation: Int): Seq[Gene] = {
-      println(selectTopGene(genes).eval)
       if(generation == 0) return genes
       
       val nextGeneration = for(_ <- 1 to genes.size) yield {
@@ -28,8 +27,6 @@ object GASolver {
           selection(genes)
         }
       }
-      println("----")
-      nextGeneration.foreach(g => println(g.eval))
       alternation(nextGeneration, generation - 1)
     }
     
@@ -49,8 +46,6 @@ object GASolver {
     // Solver start
     val genes = for(_ <- 1 to geneSize) yield gene.newRandomGene
     val lastGenerationGene = alternation(genes, generationSize)
-    
-    println("----")
     
     return selectTopGene(lastGenerationGene).eval
   }

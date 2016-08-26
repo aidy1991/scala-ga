@@ -23,5 +23,4 @@ class PolynominalFunctionGene(func: Double => Double, val x: Double) extends Gen
     val newX =  (this.x + that.asInstanceOf[PolynominalFunctionGene].x) / 2
     new PolynominalFunctionGene(func, newX)
   }
-
 }
